@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>baga</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100%;
+            font-family: "comic sans ms", "comic sans", "cursive";
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            height: 35px;
+            text-shadow: 0px 0px 20px cyan;
+            user-select: none;
+        }
+
+        table {
+            margin: auto;
+            text-align: center;
+            user-select: none;
+        }
+
+        [type='button'] {
+            margin: 5px;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+            text-shadow: 0px 0px 20px cyan;
+            background-color: rgba(0, 0, 0, 0.75);
+            border: 2px solid rgb(120, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0px 0px 7px cyan;
+            transition: all .2s;
+        }
+
+        [type='button']:hover {
+            transform: scale(1.11);
+            color: rgb(0, 33, 33);
+            text-shadow: 0px 0px 15px rgb(0, 130, 130);
+            background-color: rgb(220, 255, 255);
+            border: 2px solid white;
+            box-shadow: 0px 0px 25px cyan;
+            cursor: pointer;
+        }
+
+        [type='button']:active {
+            transform: scale(0.99);
+        }
+
+        textarea {
+            margin-top: 10px;
+            padding: 10px;
+            color: white;
+            font-size: 25px;
+            text-shadow: 0px 0px 20px cyan;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.5);
+            outline: none;
+            resize: none;
+        }
+
+        textarea::selection {
+            color: rgb(0, 33, 33);
+            text-shadow: 0px 0px 5px rgb(0, 250, 250);
+            background-color: rgba(0, 255, 255, 0.4);
+        }
+
+        textarea::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background-image: linear-gradient(to top, rgb(100, 255, 255), rgb(60, 115, 255));
+            border-radius: 10px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            opacity: 1;
+        }
+
+        .clip {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #quote {
+            font-family: 'Times New Roman', Times, serif;
+
+            text-align: center;
+            color: rgb(156, 255, 255);
+            font-size: 20px;
+            text-shadow: 0px 0px 12.5px cyan;
+            background-color: rgba(0, 0, 0, 0.751);
+        }
+
+        .quote {
+            font-family: 'Times New Roman', Times, serif;
+
+            text-align: center;
+            color: rgb(156, 255, 255);
+            font-size: 20px;
+            text-shadow: 0px 0px 12.5px cyan;
+            background-color: rgba(0, 0, 0, 0.751);
+        }
+
+        .fadeIn {
+            animation: fadeIn 3s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fadeOut {
+            animation: fadeOut 3s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .hl1 {
+            color: white;
+            font-size: 25px;
+            text-shadow: 0px 0px 20px white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: rgba(255, 0, 0, 0.542);
+            text-transform: uppercase;
+        }
+
+        .hl2 {
+            color: rgb(103, 255, 52);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgb(159, 255, 50);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+            background-color: rgba(0, 0, 0, 0.644);
+        }
+
+        .hl3 {
+            color: rgb(108, 177, 255);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgb(35, 141, 255);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .hl4 {
+            color: rgb(0, 0, 0);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgb(255, 255, 255);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .hl5 {
+            color: rgb(255, 255, 255);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.675);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .hl6 {
+            color: white;
+            font-size: 25px;
+            text-shadow: 0px 0px 5px rgba(89, 255, 0, 0.767);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-transform: uppercase;
+        }
+
+        .hl7 {
+            color: rgb(255, 136, 0);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgb(255, 196, 125);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .hl8 {
+            color: white;
+            font-size: 25px;
+            text-shadow: 0px 0px 20px white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: rgb(0, 106, 16);
+            text-transform: uppercase;
+        }
+
+        .hl9 {
+            color: white;
+            font-size: 25px;
+            text-shadow: 0px 0px 20px white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: rgb(143, 0, 110);
+            text-transform: uppercase;
+        }
+
+        .hl10 {
+            color: rgb(143, 0, 110);
+            font-size: 25px;
+            text-shadow: 0px 0px 20px rgb(139, 0, 109);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(255, 222, 247);
+            text-transform: uppercase;
+        }
+
+        .hl11 {
+            color: rgb(255, 255, 255);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgb(35, 141, 255);
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            background-color: rgba(0, 102, 255, 0.312);
+        }
+
+        .hl12 {
+            color: rgb(0, 0, 0);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgb(255, 255, 255);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-transform: uppercase;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .hl13 {
+            color: rgb(255, 255, 255);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgb(0, 0, 0);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+            background-color: rgba(0, 0, 0, 0.45);
+        }
+
+        .hl14 {
+            color: rgb(255, 87, 87);
+            font-size: 30px;
+            text-shadow: 0px 0px 20px rgb(255, 65, 65);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+            /* background-color: rgba(0, 106, 255, 0.5); */
+        }
+
+        .hl15 {
+            color: rgb(255, 218, 186);
+            font-size: 30px;
+            text-shadow: 0px 0px 10px rgb(196, 196, 196);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+            background-color: rgba(255, 89, 0, 0.515);
+        }
+
+        .hl16 {
+            color: rgb(40, 40, 40);
+            font-size: 30px;
+            text-shadow: 0px 0px 10px rgb(196, 196, 196);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+            background-color: rgba(238, 255, 0, 0.76);
+        }
+    </style>
+</head>
+
+<body>
+
+    <video autoplay loop muted plays-inlne src="pixel.mp4" class="clip"> </video>
+    <h1>🐔 ANH TRUNG PC 🐔</h1>
+    <table>
+        <tr>
+            <td><input onclick="deleteSpace()" type="button" value="🐤 Xóa cách"> 
+                <input onclick="openLink()" type="button" value="🐔 Xóa cách + Mở link"> 
+                <input onclick="refresh()" type="button" value="🥚 Làm mới"> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea name="" id="text" cols="45" rows="13"> </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mark id="quote"> </mark>
+            </td>
+        </tr>
+    </table>
+    <!-- <div id="hihi" class="quote"> </div> -->
+    <script>
+        
+        var quote =
+            [
+                'Không sợ thế giới này hết thứ <span class="hl1">&nbsp;thử thách  </span>&nbsp; bạn,<br><span class="hl7">&nbsp;chỉ sợ  </span>&nbsp; bạn đã sớm tắt đi khao khát làm "mới" chính bản thân mình.',
+                'Cho dù môi trường sống giống nhau, nếu cách <span class="hl2">&nbsp;tư duy  </span>&nbsp; không giống nhau,<br>Sẽ kéo theo những <span class="hl3">&nbsp;cuộc đời  </span>&nbsp; không giống nhau.',
+                'Nếu bạn xuất sắc hơn người khác <span class="hl4">&nbsp;một chút  </span>&nbsp;, người khác sẽ <span class="hl4">&nbsp;ghen tị  </span>&nbsp; với bạn.<br>Còn nếu bạn xuất sắc hơn <span class="hl5">&nbsp;rất nhiều  </span>&nbsp;, người khác sẽ <span class="hl5">&nbsp;hâm mộ  </span>&nbsp; bạn.<br>Đây chính là điểm khác biệt.',
+                'Nếu bạn không làm điều <span class="hl1">&nbsp;ngu ngốc  </span>&nbsp; khi <span class="hl6">&nbsp;còn trẻ  </span>&nbsp;,<br>Bạn sẽ không có gì để <span class="hl6">&nbsp;mỉm cười  </span>&nbsp; khi <span class="hl1">&nbsp;về già </spam>.',
+                'Đừng chỉ về nhà khi ta hết cái vui <span class="hl7">&nbsp;bên ngoài  </span>&nbsp;, khi ta có chuyện cần <span class="hl8">&nbsp;gia đình  </span>&nbsp;.<br>Là sau, là cuối nhưng là nơi cho ta <span class="hl8">&nbsp;sức mạnh  </span>&nbsp; để xông pha ra ngoài.',
+                'Không quan trọng là bạn <span class="hl4">&nbsp;đứng đâu  </span>&nbsp; mà là bạn đi về <span class="hl5">&nbsp;hướng nào  </span>&nbsp;?',
+                'Hãy yêu quý <span class="hl9">&nbsp;bản thân  </span>&nbsp; mình trước rồi <span class="hl10">&nbsp;mọi thứ  </span>&nbsp; sẽ đâu vào đó.',
+                'Điều quan trọng nhất của <span class="hl8">&nbsp;tuổi trẻ  </span>&nbsp; chính là<br>Trải qua bao biến cố của cuộc đời vẫn được là <span class="hl1">&nbsp;chính mình  </span>&nbsp;,<br>Vẫn bao hoài bão nhiệt huyết, vẫn nụ cười tươi,<br><span class="hl11">&nbsp;Kinh nghiệm  </span>&nbsp; dày thêm nhưng không bị biến chất bởi những tác động từ <span class="hl7">&nbsp;xã hội  </span>&nbsp;.',
+                '<span class="hl12">&nbsp;Việc  </span>&nbsp; thì ai cũng làm được nhưng <span class="hl9">&nbsp;vui  </span>&nbsp; với việc mình làm mới là <span class="hl7">&nbsp;điều khó  </span>&nbsp;.',
+                'Bạn sẽ chẳng bao giờ thật sự <span class="hl5">&nbsp;hạnh phúc  </span>&nbsp;<br>Nếu cứ tiếp tục <span class="hl4">&nbsp;giữ lấy  </span>&nbsp; những thứ<br>Làm cho bạn <span class="hl13">&nbsp;buồn  </span>&nbsp;!<br>Cứ kệ nó và tiếp tục bước đi!',
+                'Cuộc sống sẽ <span class="hl11">&nbsp;dịu dàng  </span>&nbsp; hơn biết mấy nếu con người biết <span class="hl8">&nbsp;đặt mình  </span>&nbsp; vào vị trí của nhau.',
+                'Luôn luôn <span class="hl9">&nbsp;vui vẻ  </span>&nbsp; không phải là một loại tính cách, đó là một loại <span class="hl3">&nbsp;năng lực  </span>&nbsp;.<br><span class="hl7">&nbsp;Mạnh mẽ  </span>&nbsp; không phải tính cách bẩm sinh, nó là do <span class="hl10">&nbsp;luyện tập  </span>&nbsp;.',
+                '<span class="hl14">&nbsp;Trưởng thành  </span>&nbsp; chính là từ trong sự <span class="hl8">&nbsp;phức tạp  </span>&nbsp; của cuộc đời vẫn giữ cho bản thân <span class="hl5">&nbsp;đơn thuần  </span>&nbsp;.',
+                'Để đến đích <span class="hl10">&nbsp;kiên trì  </span>&nbsp; là điều cần thiết.<br>Cẩn thận! Kẻo nhầm giữa kiên trì và <span class="hl5">&nbsp;cố chấp  </span>&nbsp;.',
+                'Đừng xem nhẹ <span class="hl3">&nbsp;nỗi đau  </span>&nbsp; của ai.<br>Bởi trong thực tế, ai cũng có nỗi khổ riêng.<br>Chỉ là một số người giỏi <span class="hl8">&nbsp;che giấu  </span>&nbsp; hơn người khác mà thôi.',
+                'Phải có cái gì đó <span class="hl5">&nbsp;mất đi  </span>&nbsp;, người ta mới nhận ra những ngày bình thường là <span class="hl1">&nbsp;hạnh phúc  </span>&nbsp;!',
+                'Không gì đau khổ hơn không được sống với những điều mình <span class="hl7">&nbsp;đam mê  </span>&nbsp;,<br>Không được làm những gì khiến mình <span class="hl4">&nbsp;hạnh phúc  </span>&nbsp;.',
+                '<span class="hl16">&nbsp;Thay đổi  </span>&nbsp; không đến qua một đêm nhưng nếu bạn không <span class="hl4">&nbsp;bắt đầu  </span>&nbsp;,<br>Bạn không thể biết được mình có thể <span class="hl11">&nbsp;đi xa  </span>&nbsp; đến đâu.',
+                'Không thể sống mà không <span class="hl9">&nbsp;thất bại  </span>&nbsp; trong một việc gì đó,<br>Trừ phi ta sống <span class="hl8">&nbsp;dè dặt  </span>&nbsp; tới mức có thể coi như chưa sống trong trường hợp đó,<br>Cả <span class="hl10">&nbsp;cuộc đời  </span>&nbsp; ta đã là một sự thất bại rồi.',
+                'Người <span class="hl3">&nbsp;khôn ngoan  </span>&nbsp; nhìn đời bằng một con mắt, con mắt kia họ nhìn lại <span class="hl1">&nbsp;chính mình  </span>&nbsp;.',
+                '<span class="hl7">&nbsp;Không phải  </span>&nbsp; lúc nào cũng hỏi, tự nghiệm câu trả lời cho <span class="hl16">&nbsp;chính mình  </span>&nbsp; sẽ học được nhiều hơn.',
+                'Trên đời này có hai kiểu người:<br>Một kiểu luôn nghỉ thế giới <span class="hl15">&nbsp;chống lại  </span>&nbsp; mình;<br>Kiểu còn lại là mặt kệ trời có sập xuống luôn bây giờ <br>Thì cứ vẫn sống thật <span class="hl12">&nbsp;hạnh phúc  </span>&nbsp;.',
+                'Đôi khi chân bạn mỏi mệt, hãy chạy bằng <span class="hl3">&nbsp;trái tim  </span>&nbsp;.<br>Khi bạn xuống <span class="hl9">&nbsp;tinh thần  </span>&nbsp;, hãy dùng đôi chân để tiếp tục chạy.<br>Miễn là, đừng để mình <span class="hl1">&nbsp;dừng lại  </span>&nbsp;, giữ cho mình tiếp tục bước tới.',
+                'Hãy nhớ, mỗi <span class="hl2">&nbsp;chúng ta  </span>&nbsp; đều là <span class="hl5">&nbsp;duy nhất và vô giá  </span>&nbsp;.',
+                'Thưởng thức đủ, yêu thương đủ, trải nghiệm đủ. Có <span class="hl6">&nbsp;luyến tiếc  </span>&nbsp; nhưng không là <span class="hl9">&nbsp;nuối tiếc  </span>&nbsp;.',
+                'Mọi thứ trên đời này, ngoại trừ gia đình ra đều đã từng là một <span class="hl4">&nbsp;phép thử  </span>&nbsp;.<br>Vậy nên cũng đừng quá <span class="hl8">&nbsp;đau lòng  </span>&nbsp; bạn nhé.',
+                'Khi ta nghĩ việc đó đến mức <span class="hl13">&nbsp;giới hạn  </span>&nbsp; thì thực ra<br>Chúng ta chỉ mới cố gắng được <span class="hl5">&nbsp;40%  </span>&nbsp; sức lực.',
+                '<span class="hl14">&nbsp;Cuốn sách hay nhất </span>&nbsp; của mỗi người <br>Chính là <span class="hl3">&nbsp;quyển nhật kí đời họ  </span>&nbsp;.',
+                '<span class="hl16">&nbsp;Cuộc sống  </span>&nbsp; chỉ kết thúc khi bạn ngừng <span class="hl1">&nbsp;ước mơ  </span>&nbsp;<br><span class="hl12">&nbsp;Hy vọng  </span>&nbsp; chỉ kết thúc khi bạn ngừng <span class="hl10">&nbsp;tin tưởng  </span>&nbsp;<br><span class="hl15">&nbsp;Tình yêu  </span>&nbsp; chỉ kết thúc khi bạn ngừng <span class="hl13">&nbsp;quan tâm  </span>&nbsp;<br><span class="hl11">&nbsp;Tình bạn  </span>&nbsp; chỉ kết thúc khi bạn ngừng <span class="hl9">&nbsp;chia sẻ  </span>&nbsp;.',
+                'Dù bạn <span class="hl4">&nbsp;thành công hay thất bại  </span>&nbsp;, người khác chỉ nhìn thấy <span class="hl5">&nbsp;20% của vấn đề  </span>&nbsp;!',
+                'Thà có ít mối quan hệ nhưng đáng <span class="hl8">&nbsp;tin cậy  </span>&nbsp;,<br><span class="hl2">&nbsp;Còn hơn  </span>&nbsp; nhiều bè mà thiếu bạn!',
+                'Có những thứ ta dù biết trước <span class="hl14">&nbsp;kết quả  </span>&nbsp; sẽ tệ đến đâu,<br>Nhưng vẫn làm, vì nó khiến ta <span class="hl9">&nbsp;nhẹ lòng  </span>&nbsp;.',
+                'Không <span class="hl9">&nbsp;quan trọng  </span>&nbsp; người khác đánh giá bạn thế nào,<br>Quan trọng là <span class="hl6">&nbsp;tâm  </span>&nbsp; bạn ra sao khi nghe người ta nói.',
+                'Khi một ai đó kể cho bạn nghe những <span class="hl3">&nbsp;vấn đề  </span>&nbsp; họ mắc phải,<br>Đó không có nghĩa là họ đang <span class="hl8">&nbsp;phàn nàn  </span>&nbsp;,<br>Mà có nghĩa là họ <span class="hl5">&nbsp;tin  </span>&nbsp; bạn.',
+                'Tiền xu thường gây ra tiếng động còn tiền giấy thì luôn <span class="hl9">&nbsp;im lặng </span>&nbsp;.<br>Vì vậy, khi giá trị của bạn <span class="hl1">&nbsp;tăng lên </span>&nbsp;<br>Hãy giữ cho mình <span class="hl11">&nbsp;khiêm tốn </span>&nbsp; và nói ít đi.',
+                'Cỏ dại cũng là <span class="hl2">&nbsp;báu vật </span>&nbsp;, quan trọng là nó có tìm đúng <span class="hl13">&nbsp;vị trí </span>&nbsp; của mình hay không thôi.',
+                'Cho dù bạn chọn con đường nào, bạn vẫn sẽ có chút <span class="hl7">&nbsp;lưu luyến </span>&nbsp; với những con đường mà bạn không chọn.<br>Vì vậy trên đời không hề có chuyện lựa chọn mà không <span class="hl10">&nbsp;hối hận </span>&nbsp;.<br>Do đó trong cuộc đời sẽ không có đáp án nào chính xác.<br>Bạn cần tin rằng con đường bạn đã chọn là đáp án <span class="hl5">&nbsp;chính xác </span>&nbsp;. Và biến nó thành câu trả lời <span class="hl7">&nbsp;đúng </span>&nbsp;. Vậy thôi.',
+                'Nếu chỉ chịu đọc hay chịu học những gì mình <span class="hl13">&nbsp;thích </span>&nbsp;<br>Ta sẽ không bao giờ trở nên <span class="hl9">&nbsp;thông thái </span>&nbsp;.',
+                'Người duy nhất có thể <span class="hl6">&nbsp;cứu </span>&nbsp; bạn chính là <span class="hl7">&nbsp;bản thân </span>&nbsp; bạn.',
+                'Hãy vẫn giữ cho mình sự <span class="hl8">&nbsp;tò mò </span>&nbsp; của một đứa trẻ<br>Nhưng với <span class="hl9">&nbsp;trải nghiệm </span>&nbsp; của một người trưởng thành.',
+                'Nếu bạn muốn <span class="hl8">&nbsp;bay lên </span>&nbsp; thì việc cần làm trước tiên<br>Là <span class="hl6">&nbsp;rũ bỏ </span>&nbsp; mọi thứ kéo bạn xuống.',
+                'Con người ta thường sợ rời khỏi vùng <span class="hl13">&nbsp;an toàn </span>&nbsp;,<br>Họ không muốn người khác thấy được mặt <span class="hl4">&nbsp;yếu kém </span>&nbsp; của mình.<br>Vì vậy họ quyết định giấu nó thay vì <span class="hl8">&nbsp;cải thiện </span>&nbsp; nó.',
+                'Thất bại không phải là <span class="hl15">&nbsp;vấp ngã </span>&nbsp; mà là cứ <span class="hl1">&nbsp;nằm lì </span>&nbsp; sau khi ngã.',
+                'Muốn có <span class="hl2">&nbsp;kết quả </span>&nbsp; sau này thì phải hành động ngay <span class="hl12">&nbsp;bây giờ </span>&nbsp;.',
+                '<span class="hl3">&nbsp;Trưởng thành </span>&nbsp; không phải là khi ta nói những chuyện <span class="hl5">&nbsp;lớn lao </span>&nbsp;<br>Mà là khi ta hiểu được những điều <span class="hl7">&nbsp;nhỏ bé </span>&nbsp;.',
+                'Có những người không bằng cấp vẫn <span class="hl16">&nbsp;thành công </span>&nbsp;<br>Nhưng chưa từng có ai <span class="hl11">&nbsp;không học </span>&nbsp; mà lại thành công cả.',
+                'Khi mọi thứ <span class="hl3">&nbsp;dễ dàng </span>&nbsp; người ta dễ bị <span class="hl1">&nbsp;ngu đi </span>&nbsp;.',
+                'Đôi khi, rào cản được hình thành do chính suy nghĩ <span class="hl12">&nbsp;hạn hẹp </span>&nbsp; của chúng ta.<br>Hãy nghĩ thoáng ra, vượt qua các chướng ngại vật,<br>bạn sẽ tìm thấy sự <span class="hl13">&nbsp;tự do </span>&nbsp;.',
+                'Hãy <span class="hl10">&nbsp;nhã nhặn </span>&nbsp; với mọi người lúc bạn đang đi lên,<br>Vì bạn sẽ gặp họ lúc bạn <span class="hl15">&nbsp;đi xuống </span>&nbsp;.',
+                'Mỗi khi đối mặt với <span class="hl5">&nbsp;thử thách </span>&nbsp;,<br>Hãy tìm cho mình <span class="hl11">&nbsp;lối đi </span>&nbsp; chứ không phải <span class="hl8">&nbsp;lối thoát </span>&nbsp;.',
+                'Người ta cho rằng sống một mình thì rất <span class="hl7">&nbsp;cô đơn </span>&nbsp;,<br>Nhưng tôi lại không nghĩ thế.<br>Ở cạnh những người <span class="hl9">&nbsp;không hiểu </span>&nbsp; mình mới là cô độc nhất trên đời.',
+                'Bố mẹ <span class="hl6">&nbsp;già rồi </span>&nbsp;, đừng mang buồn bực ngoài đường về nhà<br>Để rồi lời qua tiếng lại với <span class="hl8">&nbsp;bố mẹ </span>&nbsp;.',
+                'Những người <span class="hl5">&nbsp;cô đơn </span>&nbsp; nhất là những người <span class="hl6">&nbsp;tử tế </span>&nbsp; nhất.<br>Những người <span class="hl7">&nbsp;buồn </span>&nbsp; nhất có nụ cười <span class="hl8">&nbsp;đẹp </span>&nbsp; nhất.<br>Người bị <span class="hl14">&nbsp;tổn thương </span>&nbsp; nhiều nhất là người <span class="hl12">&nbsp;thông thái </span>&nbsp; nhất.<br>Tất cả chỉ vì họ không muốn người khác chịu đựng những gì họ đã <span class="hl10">&nbsp;trãi qua </span>&nbsp;.',
+                'Dù đêm qua bạn khóc nức nở không thành tiếng,<br><span class="hl7">&nbsp;Đau đớn </span>&nbsp; cỡ nào thì sáng hôm sau tỉnh dậy,<br>Thành phố vẫn <span class="hl3">&nbsp;nhộn nhịp </span>&nbsp; ồn ào!',
+                '<span class="hl13">&nbsp;30 năm sau </span>&nbsp;, ta sẽ không nhớ về điểm số mình đạt được<br>Hay thậm chí là số tiền mình kiếm được,<br>Mà chỉ nhớ về những <span class="hl10">&nbsp;kỷ niệm </span>&nbsp; vụn vặt của từng ngày hôm nay.',
+                'Khi móng tay mọc dài,<br>Ta cắt móng tay chứ không phải ngón tay.<br>Khi <span class="hl6">&nbsp;hiểu lầm </span>&nbsp; phát triển,<br>ta cắt <span class="hl16">&nbsp;cái tôi </span>&nbsp; chứ không phải mối <span class="hl10">&nbsp;quan hệ </span>&nbsp;.',
+                '<span class="hl15">&nbsp;Tốt bụng </span>&nbsp; và <span class="hl8">&nbsp;ngu ngốc </span>&nbsp; là hai từ khác nhau!',
+            ];
+        var i = 1;
+        window.onload = function () {
+            quote = shuffle(quote);
+            // for (let i = 0; i < quote.length; i++) {
+            //     document.getElementById('hihi').innerHTML += quote[i] + '<br>' + '<hr>';
+            // }
+            loadText();
+            document.getElementById('quote').className = 'fadeIn';
+            document.getElementById('quote').innerHTML = quote[0];
+            setTimeout(() => {
+                document.getElementById('quote').className = 'fadeOut';
+            }, 17000);
+        }
+
+        function loadText() {
+            setInterval(() => {
+                document.getElementById('quote').className = 'fadeIn';
+                document.getElementById('quote').innerHTML = quote[i];
+                console.log(i, quote);  
+                setTimeout(() => {
+                    document.getElementById('quote').className = 'fadeOut';
+                }, 17000);
+                if (i != quote.length - 1) {
+                    i++;
+                }
+                else {
+                    i = 0;
+                }
+            }, 20000);
+        }
+
+        function shuffle(array) {
+            let shuffledArray = [];
+            let usedIndexes = [];
+
+            let i = 0;
+            while (i < array.length) {
+                let randomNumber = Math.floor(Math.random() * array.length);
+                if (!usedIndexes.includes(randomNumber)) {
+                    shuffledArray.push(array[randomNumber]);
+                    usedIndexes.push(randomNumber);
+                    i++;
+                }
+            }
+            return shuffledArray;
+        }
+
+        function deleteSpace() {
+            var a = document.getElementById("text").value;
+            var b = a.replace(/ /g, '');
+            document.getElementById('text').value = b;
+            return b;
+        }
+
+        function openLink() {
+            var c = deleteSpace();
+            var d = c.split(/\r?<br>/);
+            for (let i = 0; i < d.length; i++) {
+                if (d[i] != '') {
+                    if (!d[i].match(/^https?:\/\//i) && !d[i].match(/^http?:\/\//i)) {
+                        d[i] = 'http://' + d[i];
+                    }
+                    window.open(d[i], '_blank');
+                }
+            }
+        }
+
+        function refresh() {
+            document.getElementById('text').value = '';
+        }
+
+
+    </script>
+</body>
+
+</html>
